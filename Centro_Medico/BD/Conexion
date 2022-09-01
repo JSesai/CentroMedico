@@ -1,0 +1,25 @@
+<?PHP
+try{
+    //cadena de conexion para PDO
+    //instanciamos la clase PDO para hacer uso de sus metodos con la variable $bds le pasamos cadena de conexion esta es local
+    $bds= new PDO('mysql:host=localhost; dbname=cm_js', 'root', '');
+
+    //instanciamos la clase PDO y le pasamos la cadena de conexion, en este caso sera para web server infinity free
+       // $bds= new PDO('mysql:host=sql111.epizy.com; dbname=epiz_32190745_cm_js', 'epiz_32190745', 'S3YPRoT2cBQsbd'); 
+    
+    //establecemos los codigos de error
+    $bds->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //establecemos el uso de caracteres especiales
+    $bds->exec("SET CHARACTER SET utf8");
+
+   
+
+}catch( Exception $e){
+    //si falla la conexion la terminamos
+    die("error". $e->getMessage());
+    echo "Linea del error". $e->getLine();
+
+}
+
+
+?>
